@@ -16,15 +16,7 @@ function expanded_form($n)
     $arrNumber = (str_split($toString));
     $resultArr = [];
     for ($i = 0; $i < count($arrNumber); $i++) {
-        if (isset($arrNumber[$i + 1]) and $arrNumber[$i] == 0) {
-            $str = $arrNumber[$i];
-            for ($k = (count($arrNumber) - $i - 1); $k > 0; $k--) {
-                $str .= '0';
-            }
-            $resultArr[] = $str;
-            continue;
-        }
-        elseif ($arrNumber[$i] != 0 and isset($arrNumber[$i+1])) {
+        if ((isset($arrNumber[$i + 1]) and $arrNumber[$i] == 0) or ($arrNumber[$i] != 0 and isset($arrNumber[$i+1]))) {
             $str = $arrNumber[$i];
             for ($k = (count($arrNumber) - $i - 1); $k > 0; $k--) {
                 $str .= '0';
@@ -40,5 +32,5 @@ function expanded_form($n)
         }
         $resultStr .= $resultArr[$i] . ' + ';
     }
-    return substr($resultStr,0,-2);
+    return substr($resultStr,0,-3);
 }
